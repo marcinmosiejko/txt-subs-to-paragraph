@@ -1,7 +1,8 @@
 import React from 'react';
+import Main from './Main/Main';
 
 const Root = () => {
-  return <div>Let's get going!</div>;
+  return <Main />;
 };
 
 export default Root;
