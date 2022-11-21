@@ -1,13 +1,12 @@
 import { getOpenAiResponse } from './openai';
 
-const getDividedIntoParts = async (text, charLimit) => {
+const getDividedIntoParts = async (text, charLimit, isSentences) => {
   let result = [];
   let wordsResult = [];
   let part = '';
   let partCounter = 0;
 
-  // Checks if there are sentences (dots) and if on average sentence length < part length
-  if (text.match(/\./g).length > text.length / charLimit) {
+  if (isSentences) {
     // When there are dots indicating sentences
     const sentencesArray = text.split('.');
 
@@ -48,21 +47,26 @@ const getDividedIntoParts = async (text, charLimit) => {
   }
 };
 
-const getProcessedText = async (text, charLimit) => {
+const getProcessedText = async (text, charLimit, isSentences) => {
   const singleLine = text.replace(/\s\s+/g, ' ').replaceAll('\n', ' ');
-  const dividedIntoParts = await getDividedIntoParts(singleLine, charLimit);
+  const dividedIntoParts = await getDividedIntoParts(
+    singleLine,
+    charLimit,
+    isSentences
+  );
   return dividedIntoParts;
 };
 
 export const processFile = async (
   selectedFile,
   handleSetProcessedText,
-  charLimit
+  charLimit,
+  isSentences
 ) => {
   const reader = new FileReader();
   reader.onload = async (e) => {
     const text = e.target.result;
-    const processedText = await getProcessedText(text, charLimit);
+    const processedText = await getProcessedText(text, charLimit, isSentences);
     handleSetProcessedText(processedText);
   };
   reader.readAsText(selectedFile);

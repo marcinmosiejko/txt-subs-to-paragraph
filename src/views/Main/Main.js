@@ -6,6 +6,7 @@ import {
   Form,
   Button,
   Result,
+  Options,
 } from './Main.styles';
 import FileInput from 'components/atoms/FileInput/FileInput';
 import { useForm } from 'react-hook-form';
@@ -27,8 +28,8 @@ const Main = () => {
     // console.log(processedText);
   });
 
-  const onFormSubmit = (data) => {
-    processFile(selectedFile, handleSetProcessedText, data.charLimit);
+  const onFormSubmit = ({ charLimit, isSentences }) => {
+    processFile(selectedFile, handleSetProcessedText, charLimit, isSentences);
   };
 
   const handleSetProcessedText = (arr) => {
@@ -52,13 +53,23 @@ const Main = () => {
             onChange={handleSetSelectedFile}
             errors={errors}
           />
-          <FormField
-            defaultValue={CHAR_LIMIT_DEFAULT}
-            register={register}
-            name="charLimit"
-            label="Character limit:"
-            type="number"
-          />
+          <Options>
+            <FormField
+              defaultValue={CHAR_LIMIT_DEFAULT}
+              register={register}
+              name="charLimit"
+              label="Character limit:"
+              type="number"
+              max={2000}
+              min={100}
+            />
+            <FormField
+              register={register}
+              name="isSentences"
+              label="Is divided into sentences"
+              type="checkbox"
+            />
+          </Options>
           <Button type="submit">Submit</Button>
         </Form>
         <Result>

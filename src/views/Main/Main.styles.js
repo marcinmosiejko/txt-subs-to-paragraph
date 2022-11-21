@@ -62,3 +62,10 @@ export const Result = styled.div`
   flex-direction: column;
   gap: 2rem;
 `;
+
+export const Options = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transform: scale(95%);
+`;
