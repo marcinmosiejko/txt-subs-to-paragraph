@@ -48,6 +48,7 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
   border: none;
   cursor: pointer;
+  transition: 0.3s all;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primaryDark};
@@ -68,4 +69,29 @@ export const Options = styled.div`
   flex-direction: column;
   gap: 2rem;
   transform: scale(95%);
+`;
+
+export const Loader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+`;
+
+export const ProgressBar = styled.div`
+  position: relative;
+  width: 20rem;
+  height: 0.5rem;
+  background-color: ${({ theme }) => theme.colors.red};
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: ${({ converting: { current, outOf } }) =>
+      `${(current / outOf) * 20}rem`};
+    height: 0.5rem;
+    background-color: ${({ theme }) => theme.colors.primary};
+  }
 `;

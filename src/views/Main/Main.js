@@ -7,6 +7,8 @@ import {
   Button,
   Result,
   Options,
+  Loader,
+  ProgressBar,
 } from './Main.styles';
 import FileInput from 'components/atoms/FileInput/FileInput';
 import { useForm } from 'react-hook-form';
@@ -17,6 +19,7 @@ import FormField from 'components/atoms/FileInput/FormField/FormField';
 const Main = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [processedText, setProcessedText] = useState(null);
+  const [converted, setConverted] = useState({ current: 0, outOf: 0 });
   const {
     register,
     handleSubmit,
@@ -25,21 +28,31 @@ const Main = () => {
   } = useForm();
 
   useEffect(() => {
-    // console.log(processedText);
-  });
+    if (processedText) setConverted({ current: null, outOf: null });
+  }, [processedText]);
 
   const onFormSubmit = ({ charLimit, isSentences }) => {
-    processFile(selectedFile, handleSetProcessedText, charLimit, isSentences);
-  };
-
-  const handleSetProcessedText = (arr) => {
-    setProcessedText(arr);
+    processFile({
+      selectedFile,
+      handleSetProcessedText,
+      charLimit,
+      isSentences,
+      handleSetConverted,
+    });
   };
 
   const handleSetSelectedFile = (e) => {
     clearErrors();
     const file = e.target.files[0];
     setSelectedFile(file);
+  };
+
+  const handleSetProcessedText = (arr) => {
+    setProcessedText(arr);
+  };
+
+  const handleSetConverted = (converted) => {
+    setConverted(converted);
   };
 
   return (
@@ -73,6 +86,12 @@ const Main = () => {
           <Button type="submit">Submit</Button>
         </Form>
         <Result>
+          {converted.current > 0 ? (
+            <Loader>
+              Converted: {converted.current} out of {converted.outOf}
+              <ProgressBar converted={converted} />
+            </Loader>
+          ) : null}
           {processedText?.length > 0
             ? processedText.map((p) => <p key={p.slice(-50)}>{p}</p>)
             : null}
