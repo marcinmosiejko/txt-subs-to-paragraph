@@ -15,11 +15,15 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    height: 100vh;
     width: 100%;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.background};
+
+    overflow: auto;
 }
 
 a, button {

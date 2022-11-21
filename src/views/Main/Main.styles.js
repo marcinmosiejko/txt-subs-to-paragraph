@@ -1,36 +1,40 @@
 import styled from 'styled-components';
 
 export const ViewWrapper = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 
   padding: 10rem 0;
 `;
 
 export const ContentWrapper = styled.div`
   width: 90%;
-  min-width: 30rem;
+  min-width: 24rem;
   max-width: 70rem;
+  padding: 2rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 8rem;
 `;
 
-export const Title = styled.form`
+export const Title = styled.h1`
   font-size: 4rem;
   font-weight: 600;
+  text-align: center;
+
+  @media only screen and (max-width: 24em) {
+    font-size: 3rem;
+  }
 `;
 
 export const Form = styled.form`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 6.4rem;
 `;
 
 export const FileInput = styled.input`
@@ -48,18 +52,6 @@ export const Button = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.primaryDark};
   }
-`;
-
-export const FileInputError = styled.div`
-  height: 1.4rem;
-  font-size: 1.3rem;
-  color: ${({ theme }) => theme.colors.red};
-`;
-
-export const SelectedFile = styled.div`
-  height: 1.4rem;
-  font-size: 1.3rem;
-  color: ${({ theme }) => theme.colors.primaryDark};
 `;
 
 export const Result = styled.div`

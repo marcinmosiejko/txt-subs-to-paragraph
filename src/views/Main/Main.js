@@ -4,14 +4,14 @@ import {
   ContentWrapper,
   Title,
   Form,
-  SelectedFile,
-  FileInputError,
   Button,
   Result,
 } from './Main.styles';
 import FileInput from 'components/atoms/FileInput/FileInput';
 import { useForm } from 'react-hook-form';
 import { processFile } from 'helpers/main';
+import { CHAR_LIMIT_DEFAULT } from 'helpers/config';
+import FormField from 'components/atoms/FileInput/FormField/FormField';
 
 const Main = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -19,15 +19,16 @@ const Main = () => {
   const {
     register,
     handleSubmit,
+    clearErrors,
     formState: { errors },
   } = useForm();
 
   useEffect(() => {
-    console.log(processedText);
+    // console.log(processedText);
   });
 
-  const onFormSubmit = () => {
-    processFile(selectedFile, handleSetProcessedText);
+  const onFormSubmit = (data) => {
+    processFile(selectedFile, handleSetProcessedText, data.charLimit);
   };
 
   const handleSetProcessedText = (arr) => {
@@ -35,6 +36,7 @@ const Main = () => {
   };
 
   const handleSetSelectedFile = (e) => {
+    clearErrors();
     const file = e.target.files[0];
     setSelectedFile(file);
   };
@@ -44,9 +46,19 @@ const Main = () => {
       <ContentWrapper>
         <Title>Txt Subs To Paragraphs</Title>
         <Form onSubmit={handleSubmit(onFormSubmit)}>
-          <SelectedFile> {selectedFile && selectedFile.name}</SelectedFile>
-          <FileInput register={register} onChange={handleSetSelectedFile} />
-          <FileInputError>{errors.file && 'File is required'}</FileInputError>
+          <FileInput
+            register={register}
+            selectedFile={selectedFile}
+            onChange={handleSetSelectedFile}
+            errors={errors}
+          />
+          <FormField
+            defaultValue={CHAR_LIMIT_DEFAULT}
+            register={register}
+            name="charLimit"
+            label="Character limit:"
+            type="number"
+          />
           <Button type="submit">Submit</Button>
         </Form>
         <Result>
