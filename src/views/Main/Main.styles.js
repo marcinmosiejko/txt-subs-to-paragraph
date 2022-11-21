@@ -17,7 +17,7 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 6.4rem;
+  gap: 8rem;
 `;
 
 export const Title = styled.form`
@@ -30,7 +30,7 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 `;
 
 export const FileInput = styled.input`
@@ -41,11 +41,32 @@ export const FileInput = styled.input`
 export const Button = styled.button`
   padding: 0.6rem 1.2rem;
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.colors.green};
+  background-color: ${({ theme }) => theme.colors.primary};
   border: none;
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.greenDark};
+    background-color: ${({ theme }) => theme.colors.primaryDark};
   }
+`;
+
+export const FileInputError = styled.div`
+  height: 1.4rem;
+  font-size: 1.3rem;
+  color: ${({ theme }) => theme.colors.red};
+`;
+
+export const SelectedFile = styled.div`
+  height: 1.4rem;
+  font-size: 1.3rem;
+  color: ${({ theme }) => theme.colors.primaryDark};
+`;
+
+export const Result = styled.div`
+  font-size: 1.6rem;
+  line-height: 1.2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `;

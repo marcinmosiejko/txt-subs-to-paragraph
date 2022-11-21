@@ -4,9 +4,11 @@ export const theme = {
     lightGrey: '#c8cfde',
     darkGrey: '#303a4f',
 
-    green: '#48dcb0',
-    greenDark: '#22b488',
-    greenLight: '#48dcb0',
+    primary: '#48dcb0',
+    primaryDark: '#22b488',
+    primaryLight: '#48dcb0',
+
+    red: '#ff6b6b',
 
     background: '#13161e',
     button: '#d4dae5',
