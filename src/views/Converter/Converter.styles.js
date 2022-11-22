@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Title = styled.h1`
-  font-size: 4rem;
+  font-size: 4.2rem;
   font-weight: 600;
   text-align: center;
 
@@ -27,5 +27,4 @@ export const Options = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  transform: scale(95%);
 `;

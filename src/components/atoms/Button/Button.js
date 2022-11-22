@@ -1,14 +1,22 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
+  padding: ${({ isL }) => {
+    if (isL) return '1rem 2rem';
+    return '0.6rem 1.2rem';
+  }};
+  font-size: ${({ isL }) => {
+    if (isL) return '1.6rem';
+    return '1.4rem';
+  }};
+
+  border: none;
+  border-radius: 0.5rem;
   background-color: ${({ theme, isGrey }) => {
     if (isGrey) return theme.colors.lightGrey;
     return theme.colors.primary;
   }};
 
-  border: none;
   cursor: pointer;
   transition: 0.3s all;
 

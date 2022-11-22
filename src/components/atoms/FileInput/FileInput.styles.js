@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 `;
 
 export const SelectedFile = styled.div`
@@ -15,11 +15,11 @@ export const SelectedFile = styled.div`
   flex-direction: column;
   align-items: center;
 
-  gap: 1rem;
+  gap: 1.2rem;
 `;
 export const Description = styled.div`
-  height: 1.4rem;
-  font-size: 1.3rem;
+  height: 1.5rem;
+  font-size: 1.5rem;
 `;
 
 export const FileName = styled.div`
@@ -29,9 +29,9 @@ export const FileName = styled.div`
 
 export const Label = styled.label`
   display: inline-block;
-  padding: 0.6rem 1.2rem;
-  font-size: 1.3rem;
-  border-radius: 3px;
+  padding: 1rem 1.6rem;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
 
   border: ${({ theme }) => `1px solid ${theme.colors.lightGrey}`};
 

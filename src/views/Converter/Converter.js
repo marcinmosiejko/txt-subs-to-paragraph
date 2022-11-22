@@ -81,7 +81,9 @@ const Converter = () => {
             type="checkbox"
           />
         </Options>
-        <Button type="submit">Convert</Button>
+        <Button type="submit" isL>
+          Convert
+        </Button>
       </Form>
     </MainTemplate>
   );

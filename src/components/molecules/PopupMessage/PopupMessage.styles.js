@@ -10,19 +10,18 @@ to {
 
 const slideAnimation = keyframes`
 from {
-    transform: translateX(200%) translateY(0);
+    transform: translateX(-50%) translateY(400%);
 }
 to {
-    transform: translateX(0%) translateY(0);
+    transform: translateX(-50%) translateY(0);
 }
 `;
 
 export const Wrapper = styled.div`
   opacity: 0.98;
   position: absolute;
-  right: 2%;
-  transform: translateX(-50%);
-  top: 20rem;
+  left: 50%;
+  bottom: 5rem;
 
   padding: 4.4rem 4rem 2rem;
   background-color: ${({ theme }) => theme.colors.background};
