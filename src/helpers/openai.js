@@ -1,7 +1,5 @@
 import { Configuration, OpenAIApi } from 'openai';
 
-console.log(process.env.REACT_APP_OPENAI_TOKEN);
-
 const configuration = new Configuration({
   apiKey: process.env.REACT_APP_OPENAI_TOKEN,
 });
