@@ -23,56 +23,9 @@ export const FileInput = styled.input`
   border-radius: 5px;
 `;
 
-export const Button = styled.button`
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
-  background-color: ${({ theme }) => theme.colors.primary};
-  border: none;
-  cursor: pointer;
-  transition: 0.3s all;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primaryDark};
-  }
-`;
-
-export const Result = styled.div`
-  font-size: 1.6rem;
-  line-height: 1.2;
-
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-`;
-
 export const Options = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
   transform: scale(95%);
-`;
-
-export const Loader = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-`;
-
-export const ProgressBar = styled.div`
-  position: relative;
-  width: 20rem;
-  height: 0.5rem;
-  background-color: ${({ theme }) => theme.colors.red};
-
-  &::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: ${({ converting: { current, outOf } }) =>
-      `${(current / outOf) * 20}rem`};
-    height: 0.5rem;
-    background-color: ${({ theme }) => theme.colors.primary};
-  }
 `;

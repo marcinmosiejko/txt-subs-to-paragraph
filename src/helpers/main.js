@@ -5,6 +5,7 @@ const getDividedIntoParts = async ({
   charLimit,
   isSentences,
   handleSetConverted,
+  convert,
 }) => {
   let result = [];
   let wordsResult = [];
@@ -42,14 +43,18 @@ const getDividedIntoParts = async ({
     }
     result.push(part);
 
-    const instruction = 'Transform into sentences:';
-    for (let [index, part] of result.entries()) {
-      const response = await getOpenAiResponse(instruction, part);
-      handleSetConverted({ current: index + 1, outOf: result.length });
-      wordsResult.push(response.data.choices[0].text);
+    if (convert) {
+      const instruction = 'Transform into sentences:';
+      for (let [index, part] of result.entries()) {
+        handleSetConverted({ soFar: index, outOf: result.length });
+        const response = await getOpenAiResponse(instruction, part);
+        wordsResult.push(response.data.choices[0].text);
+      }
+      handleSetConverted({ soFar: result.length, outOf: result.length });
+      return wordsResult;
+    } else {
+      return result;
     }
-
-    return wordsResult;
   }
 };
 
@@ -58,6 +63,7 @@ const getProcessedText = async ({
   charLimit,
   isSentences,
   handleSetConverted,
+  convert,
 }) => {
   const singleLine = text.replace(/\s\s+/g, ' ').replaceAll('\n', ' ');
   const dividedIntoParts = await getDividedIntoParts({
@@ -65,6 +71,7 @@ const getProcessedText = async ({
     charLimit,
     isSentences,
     handleSetConverted,
+    convert,
   });
   return dividedIntoParts;
 };
@@ -74,6 +81,7 @@ export const processFile = async ({
   handleSetProcessedText,
   charLimit,
   isSentences,
+  convert,
   handleSetConverted,
 }) => {
   const reader = new FileReader();
@@ -84,8 +92,13 @@ export const processFile = async ({
       charLimit,
       isSentences,
       handleSetConverted,
+      convert,
     });
     handleSetProcessedText(processedText);
   };
   reader.readAsText(selectedFile);
+};
+
+export const processedTextToClipboard = (processedText) => {
+  navigator.clipboard.writeText(processedText.join('\n\n'));
 };

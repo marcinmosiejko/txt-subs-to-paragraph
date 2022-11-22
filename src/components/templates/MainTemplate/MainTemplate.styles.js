@@ -5,7 +5,7 @@ export const ViewWrapper = styled.div`
   display: flex;
   justify-content: center;
 
-  padding: 10rem 0;
+  padding: 8rem 0 3rem;
 `;
 
 export const ContentWrapper = styled.div`

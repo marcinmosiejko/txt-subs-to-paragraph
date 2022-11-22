@@ -4,11 +4,11 @@ const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   const [processedText, setProcessedText] = useState(null);
-  const [converted, setConverted] = useState({ current: 0, outOf: 0 });
+  const [converted, setConverted] = useState({ soFar: 0, outOf: 0 });
 
-  const handleSetProcessedText = (arr) => {
+  const handleSetProcessedText = useCallback((arr) => {
     setProcessedText(arr);
-  };
+  }, []);
 
   const handleSetConverted = useCallback((converted) => {
     setConverted(converted);
