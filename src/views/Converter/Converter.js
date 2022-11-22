@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Title, Form, Options } from './Main.styles';
+import { Title, Form, Options } from './Converter.styles';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import FileInput from 'components/atoms/FileInput/FileInput';
 import FormField from 'components/atoms/FileInput/FormField/FormField';
@@ -10,7 +10,7 @@ import { CHAR_LIMIT_DEFAULT } from 'helpers/config';
 import { useData } from 'hooks/useData';
 import { useNavigate } from 'react-router-dom';
 
-const Main = () => {
+const Converter = () => {
   const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState(null);
   const {
@@ -27,7 +27,7 @@ const Main = () => {
   } = useForm();
 
   useEffect(() => {
-    if (processedText) handleSetConverted({ soFar: null, outOf: null });
+    if (processedText) handleSetConverted({ soFar: 0, outOf: 0 });
   }, [processedText, handleSetConverted]);
 
   const onFormSubmit = ({ charLimit, isSentences, convert }) => {
@@ -87,4 +87,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Converter;

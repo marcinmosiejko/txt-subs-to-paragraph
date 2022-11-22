@@ -43,3 +43,11 @@ export const ResultWrapper = styled.div`
   align-items: center;
   gap: 3rem;
 `;
+
+export const Options = styled.div`
+  color: ${({ theme }) => theme.colors.lightGrey};
+
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+`;

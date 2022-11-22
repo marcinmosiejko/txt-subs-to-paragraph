@@ -36,6 +36,7 @@ const getDividedIntoParts = async ({
       if (part.length + word.length > charLimit) {
         result.push(part);
         part = word;
+        // eslint-disable-next-line
         partCounter++;
       } else {
         part += word + ' ';

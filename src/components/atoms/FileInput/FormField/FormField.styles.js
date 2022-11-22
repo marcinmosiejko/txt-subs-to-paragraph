@@ -17,7 +17,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   display: inline-block;
-  width: 6.4rem;
+  width: 7.4rem;
   padding: 0.4rem 0.8rem;
   border-radius: 3px;
   background-color: ${({ theme }) => theme.colors.lightGrey};
