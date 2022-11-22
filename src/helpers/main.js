@@ -99,6 +99,16 @@ export const processFile = async ({
   reader.readAsText(selectedFile);
 };
 
-export const processedTextToClipboard = (processedText) => {
+export const processedTextToClipboard = (
+  processedText,
+  dispatchPopup,
+  resetPopup
+) => {
   navigator.clipboard.writeText(processedText.join('\n\n'));
+  dispatchPopup({
+    type: 'success',
+    title: 'Success',
+    message: 'Text successfully copied to clipboard',
+  });
+  setTimeout(resetPopup, 7000);
 };

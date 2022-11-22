@@ -23,7 +23,8 @@ body {
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.background};
 
-    overflow: auto;
+    position: relative;
+    overflow: hidden;
 }
 
 a, button {

@@ -14,7 +14,13 @@ import { processedTextToClipboard } from 'helpers/main';
 import { Link } from 'react-router-dom';
 
 const Result = () => {
-  const { processedText, converted, handleSetProcessedText } = useData();
+  const {
+    processedText,
+    converted,
+    handleSetProcessedText,
+    dispatchPopup,
+    resetPopup,
+  } = useData();
 
   useEffect(() => {
     return () => handleSetProcessedText(null);
@@ -28,7 +34,15 @@ const Result = () => {
             <Button isGrey>back to converter</Button>
           </Link>
           {processedText?.length > 0 ? (
-            <Button onClick={() => processedTextToClipboard(processedText)}>
+            <Button
+              onClick={() =>
+                processedTextToClipboard(
+                  processedText,
+                  dispatchPopup,
+                  resetPopup
+                )
+              }
+            >
               copy to clipboard
             </Button>
           ) : null}
@@ -43,7 +57,6 @@ const Result = () => {
 
         {processedText?.length > 0 ? (
           <ResultWrapper>
-            <Options></Options>
             {processedText.map((p) => (
               <p key={p.slice(-50)}>{p}</p>
             ))}

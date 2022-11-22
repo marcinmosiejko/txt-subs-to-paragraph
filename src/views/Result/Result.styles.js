@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { scrollbar } from 'assets/styles/mixins';
 
 export const Wrapper = styled.div`
   font-size: 1.6rem;
@@ -44,10 +45,14 @@ export const ProgressBar = styled.div`
 `;
 
 export const ResultWrapper = styled.div`
+  padding: 4rem 2.4rem;
+  border-radius: 0.9rem;
   color: ${({ theme }) => theme.colors.white};
 
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
+
+  ${scrollbar}
 `;
