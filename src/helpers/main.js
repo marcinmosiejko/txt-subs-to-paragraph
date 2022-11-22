@@ -31,7 +31,6 @@ const getDividedIntoParts = async ({
   } else {
     // When there are NO dots indicating sentences
     const wordsArray = singleLine.split(' ');
-
     for (let word of wordsArray) {
       if (part.length + word.length > charLimit) {
         result.push(part);

@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import { useData } from 'hooks/useData';
-import { Wrapper, Loader, ProgressBar, Options } from './Result.styles';
+import {
+  Wrapper,
+  Loader,
+  ProgressBar,
+  Options,
+  ResultWrapper,
+} from './Result.styles';
 import { SpinnerCircular } from 'spinners-react';
 import { Button } from 'components/atoms/Button/Button';
 import { processedTextToClipboard } from 'helpers/main';
@@ -11,7 +17,7 @@ const Result = () => {
   const { processedText, converted, handleSetProcessedText } = useData();
 
   useEffect(() => {
-    handleSetProcessedText(null);
+    return () => handleSetProcessedText(null);
   }, [handleSetProcessedText]);
 
   return (
@@ -36,12 +42,12 @@ const Result = () => {
         ) : null}
 
         {processedText?.length > 0 ? (
-          <>
+          <ResultWrapper>
             <Options></Options>
             {processedText.map((p) => (
               <p key={p.slice(-50)}>{p}</p>
             ))}
-          </>
+          </ResultWrapper>
         ) : null}
       </Wrapper>
     </MainTemplate>

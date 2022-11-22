@@ -6,7 +6,15 @@ export const Wrapper = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
+`;
+
+export const Options = styled.div`
+  color: ${({ theme }) => theme.colors.lightGrey};
+
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
 `;
 
 export const Loader = styled.div`
@@ -36,18 +44,10 @@ export const ProgressBar = styled.div`
 `;
 
 export const ResultWrapper = styled.div`
-  color: ${({ theme }) => theme.colors.lightGrey};
+  color: ${({ theme }) => theme.colors.white};
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
-`;
-
-export const Options = styled.div`
-  color: ${({ theme }) => theme.colors.lightGrey};
-
-  display: flex;
-  justify-content: center;
   gap: 3rem;
 `;
